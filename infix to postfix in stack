@@ -56,7 +56,7 @@ void convert::post()
    postfix[p++]=s[top--]; 
    top--; 
   } 
-12 
+
  
   else 
   cout<<"\nWrong string"; 
