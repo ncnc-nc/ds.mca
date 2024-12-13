@@ -1,0 +1,111 @@
+ 
+#include<iostream.h> 
+#include<conio.h> 
+#include<stdlib.h> 
+ 
+class polyexpr 
+{ 
+  int pe1[10],pe2[10],pe3[10]; 
+  int order; 
+ public: 
+  polyexpr(int); 
+  void read_polyexpr1(); 
+  void read_polyexpr2(); 
+  void add_polyexpr(); 
+  void sub_polyexpr(); 
+  void view_polyexpr(); 
+ 
+}; 
+polyexpr::polyexpr(int para) 
+{ 
+ order = para; 
+} 
+void polyexpr::read_polyexpr1() 
+{ 
+ cout<<endl<<"Enter poly exp 1 : "; 
+ for (int i=order;i>=0;i--) 
+ { 
+  cout<<endl<<"Enter coeff of x^"<<i<<" : "; 
+  cin>>pe1[i]; 
+ } 
+ 
+} 
+void polyexpr::read_polyexpr2() 
+{ 
+ cout<<endl<<"Enter poly exp 2 : "; 
+ for (int i=order;i>=0;i--) 
+ { 
+  cout<<endl<<"Enter coeff of x^"<<i<<" : "; 
+  cin>>pe2[i]; 
+ } 
+} 
+ 
+void polyexpr::add_polyexpr() 
+{ 
+ for (int i=order;i>=0;i--) 
+  pe3[i]=pe1[i]+pe2[i]; 
+ view_polyexpr(); 
+} 
+ 
+void polyexpr::sub_polyexpr() 
+{ 
+ for (int i=order;i>=0;i--) 
+  pe3[i]=pe1[i]-pe2[i]; 
+ view_polyexpr(); 
+} 
+  
+ 
+void polyexpr::view_polyexpr() 
+{ 
+ cout<<endl<<"poly exp  : "; 
+ for (int i=order;i>=0;i--) 
+ { 
+  if(i>=2 && pe3[i] !=0) 
+  { 
+   if(pe3[i]==1) 
+    cout<<"x^"<<i<<" + "; 
+   else 
+    cout<<pe3[i]<<"x^"<<i<<" + "; 
+  } 
+  else 
+  { 
+   if(i==1 &&pe3[i] !=0) 
+   { 
+    if(pe3[i]==1) 
+     cout<<"x + "; 
+    else 
+     cout<<pe3[i]<<"x + "; 
+   } 
+   else 
+   { 
+    if(pe3[i] !=0) 
+       cout<<pe3[i]; 
+   } 
+  } 
+ } 
+} 
+void main() 
+{ 
+ int ord,ch; 
+ clrscr(); 
+ cout<<endl<<"Enter max order of poly expression : "; 
+ cin>>ord; 
+ polyexpr obj(ord); 
+ obj.read_polyexpr1(); 
+ obj.read_polyexpr2(); 
+ cout<<"1: poly add  2: poly sub  3: exit"; 
+ while(ch!=3) 
+ { 
+ cout<<"\nEnter your choice"; 
+ cin>>ch; 
+ switch(ch) 
+ { 
+  case 1:obj.add_polyexpr(); 
+  break; 
+  case 2:obj.sub_polyexpr(); 
+  break; 
+  case 3: exit(0); 
+ } 
+     } 
+ getch(); 
+} 
